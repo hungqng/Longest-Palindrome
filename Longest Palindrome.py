@@ -18,3 +18,13 @@ class Solution:
                 hash.remove(c)
         # len(hash) is the number of the odd letters
         return len(s) - len(hash) + 1 if len(hash) > 0 else len(s)
+
+        # Solution 3
+        res = 0
+        count = Counter(s)
+        for c, n in count.items():
+            if n % 2 == 0 or res % 2 == 0:
+                res += n
+            else:
+                res += n - 1
+        return res
